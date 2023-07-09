@@ -1,10 +1,11 @@
+import { Product } from './product.svelte';
+
 export const load = async(loadEvent) => {
-    const { fetch } = loadEvent;
-    const title = 'List of available products';
+    console.log('Load function called in page.js');
+    const { fetch, data } = loadEvent;
     const response = await fetch("http://localhost:4000/products");
-    const products = await response.json();
     return {
-        title,
-        products
+        ...data,
+        Component: Product
     };
 }
